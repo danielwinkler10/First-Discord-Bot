@@ -6,7 +6,6 @@ const lodash = require('lodash');
 var prem = ["Owner", "Admin"];
 var bot = new discord.Client();
 var channelGetName = 0;
-var getPerm =
 
 //----------------------------------------------------------------------------------------//
 
@@ -14,8 +13,9 @@ bot.on("message", msg => {
     if (msg.author.bot)
         return;
 
-    if (msg.member.roles.array().name !== "Owner")
+    if (!msg.member.roles.filterArray(role => { return role.name === 'OWNER' || role.name === 'ADMIN'; }).length === 1) {
         return;
+    }
 
     var text = msg.content;
 
