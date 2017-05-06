@@ -13,7 +13,8 @@ bot.on("message", msg => {
     if (msg.author.bot)
         return;
 
-    if (!msg.member.roles.filterArray(role => { return role.name === 'OWNER' || role.name === 'ADMIN'; }).length === 1) {
+    isAdmin = msg.member.roles.filterArray(role => { return role.name === 'OWNER' || role.name === 'ADMIN'; }).length;
+    if (isAdmin === 0) {
         return;
     }
 
@@ -30,4 +31,4 @@ bot.on("message", msg => {
     }
 });
 
-bot.login("MjQxODIzNzY1MDQ0OTIwMzIy.CvXq1A.SfLRDFjEKTQZPhRQq5ewSkpjdbc");
+bot.login("key");
